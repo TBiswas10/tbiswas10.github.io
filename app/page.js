@@ -2,6 +2,7 @@
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import { useTheme } from "./components/ThemeProvider";
+import Image from "next/image";
 
 function SunIcon({ className }) {
   return (
@@ -67,13 +68,15 @@ export default function Home() {
         />
         {/* Radial Glow Behind Avatar */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-gradient-radial from-fuchsia-500/40 via-blue-500/30 to-transparent blur-2xl -z-10" />
-        <img
+        <Image
           src="/window.svg"
           alt="Avatar"
+          width={128}
+          height={128}
           className="w-32 h-32 rounded-full border-4 border-accent dark:border-white shadow-xl mb-6 bg-white/30 backdrop-blur-lg"
         />
         <h1 className="text-5xl lg:text-7xl font-heading font-bold text-primary dark:text-white text-center">
-          Hi, I'm{" "}
+          Hi, I&apos;m{" "}
           <span className="text-accent dark:text-white">Tirtha Biswas</span>
         </h1>
         <p className="mt-4 text-xl text-text-secondary dark:text-gray-300 text-center max-w-2xl">
@@ -138,7 +141,13 @@ export default function Home() {
         <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
           {/* Project Card Example */}
           <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition">
-            <img src="/file.svg" alt="Project 1" className="w-16 h-16 mb-4" />
+            <Image
+              src="/file.svg"
+              alt="Project 1"
+              width={64}
+              height={64}
+              className="w-16 h-16 mb-4"
+            />
             <h3 className="text-xl font-semibold mb-2 text-text dark:text-white">
               Project One
             </h3>
@@ -154,7 +163,13 @@ export default function Home() {
             </a>
           </div>
           <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition">
-            <img src="/file.svg" alt="Project 2" className="w-16 h-16 mb-4" />
+            <Image
+              src="/file.svg"
+              alt="Project 2"
+              width={64}
+              height={64}
+              className="w-16 h-16 mb-4"
+            />
             <h3 className="text-xl font-semibold mb-2 text-text dark:text-white">
               Project Two
             </h3>
@@ -170,7 +185,13 @@ export default function Home() {
             </a>
           </div>
           <div className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition">
-            <img src="/file.svg" alt="Project 3" className="w-16 h-16 mb-4" />
+            <Image
+              src="/file.svg"
+              alt="Project 3"
+              width={64}
+              height={64}
+              className="w-16 h-16 mb-4"
+            />
             <h3 className="text-xl font-semibold mb-2 text-text dark:text-white">
               Project Three
             </h3>
@@ -189,7 +210,7 @@ export default function Home() {
       </section>
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-b from-[#f8fafc] via-[#e0e7ef] to-[#cbd5e1] dark:from-black dark:via-zinc-900 dark:to-black text-primary dark:text-white text-center">
-        <h2 className="text-3xl font-bold mb-4">Let's Connect!</h2>
+        <h2 className="text-3xl font-bold mb-4">Let&apos;s Connect!</h2>
         <p className="mb-6 text-lg">
           Interested in collaborating or just want to say hi? Reach out to me
           below.
@@ -226,7 +247,13 @@ export default function Home() {
             rel="noopener noreferrer"
             className="hover:scale-110 transition"
           >
-            <img src="/linkedin-light.svg" alt="LinkedIn" className="w-8 h-8" />
+            <Image
+              src="/linkedin-light.svg"
+              alt="LinkedIn"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
           </a>
           <a
             href="https://twitter.com/yourprofile"
@@ -234,7 +261,13 @@ export default function Home() {
             rel="noopener noreferrer"
             className="hover:scale-110 transition"
           >
-            <img src="/twitter-light.svg" alt="Twitter" className="w-8 h-8" />
+            <Image
+              src="/twitter-light.svg"
+              alt="Twitter"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
           </a>
           <a
             href="https://github.com/yourprofile"
@@ -242,7 +275,13 @@ export default function Home() {
             rel="noopener noreferrer"
             className="hover:scale-110 transition"
           >
-            <img src="/github-light.svg" alt="GitHub" className="w-8 h-8" />
+            <Image
+              src="/github-light.svg"
+              alt="GitHub"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+            />
           </a>
         </div>
       </section>
