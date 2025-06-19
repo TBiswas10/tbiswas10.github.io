@@ -108,7 +108,7 @@ export default function Home() {
         </h2>
 
         <p className="max-w-xl text-center text-lg text-text-secondary dark:text-gray-300 mb-6">
-          I&apos;'m Tirtha, passionate about building impactful software and exploring
+          I'&apos;m Tirtha, passionate about building impactful software and exploring
           the frontiers of AI and Quantum Computing. I love solving problems and
           collaborating on innovative projects.
         </p>
