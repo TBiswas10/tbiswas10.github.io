@@ -7,18 +7,14 @@ export const metadata = {
   description:
     "Tirtha Biswas - Aspiring Software Engineer, AI & Quantum Computing Enthusiast.",
   openGraph: {
-    title: "Tito | Portfolio",
+    title: "Tirtha Biswas | Portfolio",
     description:
-      "Tirtha Biswas - Aspiring Software Engineer, AI & Quantum Computing Enthusiast.",
-    images: [
-      {
-        url: "/profile.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Tito Portfolio Open Graph Image",
-      },
-    ],
+      "Aspiring Software Engineer, AI & Quantum Computing Enthusiast.",
   },
+  icons: {
+    icon: "/favicon.ico",
+  },
+
 };
 
 export default function RootLayout({ children }) {

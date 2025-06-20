@@ -33,8 +33,9 @@ export default function Header() {
       <Link
         href="/"
         className={`relative text-lg font-heading font-bold flex items-center gap-2 min-w-[80px] transition-colors duration-300
-          ${scrolled ? "text-black dark:text-white after:bg-black dark:after:bg-white" : "text-black dark:text-white after:bg-white"}
+          ${scrolled ? "text-black dark:text-white after:bg-black dark:after:bg-white " : "text-black dark:text-white after:bg-white"}
           after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-6 after:h-[3px] after:scale-x-0 after:transition-transform after:duration-200 after:origin-left hover:after:scale-x-100`}
+        style={{ lineHeight: 1.1 }}
       >
         TB
       </Link>
@@ -57,7 +58,10 @@ export default function Header() {
         <a
           href="#contact"
           className={`inline-flex items-center gap-1 px-4 py-1.5 rounded-full font-semibold text-sm transition-colors duration-300
-            ${scrolled ? "bg-white/80 dark:bg-white/20 text-black dark:text-white hover:bg-black hover:text-white hover:scale-105 dark:hover:bg-white/30 " : "bg-white/20 text-white hover:bg-white/40"}`}
+            ${scrolled
+              ? "bg-white/10 dark:bg-white/10 text-black dark:text-white hover:bg-blue-100 dark:hover:bg-white/30 hover:text-black dark:hover:text-white outline-2 outline-black/40 dark:outline-0"
+              : "bg-white/80 dark:bg-white/20 text-black dark:text-white hover:bg-white/40 dark:hover:text-white"}
+            `}
         >
           Contact
         </a>
