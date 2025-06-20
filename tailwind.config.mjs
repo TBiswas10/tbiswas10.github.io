@@ -1,8 +1,6 @@
-import defaultTheme from "tailwindcss/defaultTheme";
-
 /** @type {import('tailwindcss').Config} */
 const config = {
-  darkMode: "class",
+  darkMode: ".dark",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -25,7 +23,7 @@ const config = {
         },
         background: {
           DEFAULT: "#f8fafc", // slate-50
-          dark: "#000", // black in dark mode
+          dark: "#0a0d14", // custom dark mode background
         },
         card: {
           DEFAULT: "#ffffff", // white for cards

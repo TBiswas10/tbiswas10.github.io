@@ -1,11 +1,8 @@
 @import "tailwindcss";
 @import "@fontsource/poppins/latin.css";
 @import "@fontsource/inter/latin.css";
+@custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #f3f4f6;
-  --foreground: #111827;
-}
 
 @theme inline {
   --color-background: var(--background);
@@ -14,12 +11,7 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+
 
 body {
   font-family: 'Inter', sans-serif;
