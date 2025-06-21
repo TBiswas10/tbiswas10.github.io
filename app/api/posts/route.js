@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 
+// Required for static export
+export const dynamic = "force-static";
+
 // Mock database - replace with your actual database
 const posts = [
   {
