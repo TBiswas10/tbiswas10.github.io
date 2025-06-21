@@ -2,11 +2,12 @@
 import Link from "next/link";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#projects", label: "Projects" },
-  { href: "#blog", label: "Blog" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {
@@ -47,7 +48,7 @@ export default function Header() {
             href={link.href}
             className={`relative font-bold text-sm transition-colors duration-300
               ${scrolled ? "text-black dark:text-white after:bg-black dark:after:bg-white" : "text-black dark:text-white after:bg-white"}
-              after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[3px] after:scale-x-0 after:transition-transform after:duration-200 after:origin-left hover:after:scale-x-100`}
+              after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[3px] after:scale-x-0 after:transition-transform after:duration-200 after:origin-left hover:after:scale-x-100 `}
           >
             {link.label}
           </a>
@@ -55,12 +56,15 @@ export default function Header() {
       </nav>
       {/* Actions */}
       <div className="flex items-center gap-2 min-w-[80px] justify-end flex-shrink-0">
+        <ThemeToggle />
         <a
-          href="#contact"
+          href="/#contact"
           className={`inline-flex items-center gap-1 px-4 py-1.5 rounded-full font-semibold text-sm transition-colors duration-300
-            ${scrolled
-              ? "bg-white/10 dark:bg-white/10 text-black dark:text-white hover:bg-blue-100 dark:hover:bg-white/30 hover:text-black dark:hover:text-white outline-2 outline-black/40 dark:outline-0"
-              : "bg-white/80 dark:bg-white/20 text-black dark:text-white hover:bg-white/40 dark:hover:text-white"}
+            ${
+              scrolled
+                ? "bg-white/10 dark:bg-white/10 text-black dark:text-white hover:bg-blue-100 dark:hover:bg-white/30 hover:text-black dark:hover:text-white outline-2 outline-black/40 dark:outline-0"
+                : "bg-white/80 dark:bg-white/20 text-black dark:text-white hover:bg-white/40 dark:hover:text-white"
+            }
             `}
         >
           Contact

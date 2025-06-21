@@ -15,6 +15,7 @@ const ThemeContext = createContext({
 
 export function ThemeProvider({ children }) {
   const [theme, setThemeState] = useState("dark");
+  const [mounted, setMounted] = useState(false);
 
   const setTheme = useCallback((newTheme) => {
     setThemeState(newTheme);
@@ -36,19 +37,31 @@ export function ThemeProvider({ children }) {
 
   // On mount, sync with localStorage
   useEffect(() => {
+    setMounted(true);
     const storedTheme = localStorage.getItem("theme");
     if (storedTheme) {
       setTheme(storedTheme);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      setTheme("dark");
     }
   }, [setTheme]);
 
+  // Prevent hydration mismatch by using a consistent initial state
+  const value = {
+    theme: mounted ? theme : "dark",
+    setTheme,
+    toggleTheme,
+  };
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 
 export function useTheme() {
-  return useContext(ThemeContext);
+  const context = useContext(ThemeContext);
+  if (context === undefined) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
 }

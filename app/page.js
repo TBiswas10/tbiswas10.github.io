@@ -1,11 +1,10 @@
 "use client";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
-import { SunIcon, MoonIcon } from "@radix-ui/react-icons";
-import { useTheme } from "./components/ThemeProvider";
 
 function TypingHero() {
   const fullText = "Hi, I'm Tirtha Biswas";
@@ -27,7 +26,7 @@ function TypingHero() {
   }, []);
 
   return (
-    <h1 className="text-5xl lg:text-7xl font-heading font-bold text-black dark:text-white text-center ">
+    <h1 className="text-5xl lg:text-7xl font-heading font-bold bg-gradient-to-l from-teal-500 via-cyan-500 to-blue-500 bg-clip-text text-transparent text-center">
       <span>{displayed}</span>
       <span
         className="inline-block w-2 align-middle"
@@ -62,30 +61,9 @@ const cardVariant = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
-function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
-  const isDark =
-    theme === "dark" ||
-    (theme === "system" &&
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches);
-  return (
-    <button
-      onClick={toggleTheme}
-      className="ml-2 p-2 rounded-full border border-muted dark:border-zinc-700 bg-white dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
-    >
-      {isDark ? (
-        <SunIcon className="w-5 h-5 text-yellow-500" />
-      ) : (
-        <MoonIcon className="w-5 h-5 text-zinc-800" />
-      )}
-    </button>
-  );
-}
-
 export default function Home() {
   return (
-    <div className="">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
       <Header />
       {/* Hero Section */}
       <motion.section
@@ -97,18 +75,15 @@ export default function Home() {
         variants={fadeSlideUp}
         custom={0}
       >
-        {/* Deep Gradient Background */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-sky-100 to-blue-200 dark:bg-gradient-to-br dark:from-black dark:via-zinc-900 dark:to-black" />
-        {/* Soft Vignette for Depth */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-10 rounded-b-3xl"
-          style={{ boxShadow: "0 0 120px 60px rgba(0,0,0,0.25) inset" }}
-        />
-        {/* Radial Glow Behind Avatar */}
+        {/* Aurora Effect */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-aurora1"></div>
+          <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-400/20 rounded-full blur-3xl animate-aurora2"></div>
+        </div>
 
         <TypingHero />
         <motion.p
-          className="mt-4 text-xl text-black dark:text-gray-300 text-center max-w-2xl"
+          className="mt-4 text-xl text-gray-600 dark:text-gray-300 text-center max-w-2xl"
           initial="hidden"
           animate="visible"
           variants={fadeSlideUp}
@@ -125,23 +100,24 @@ export default function Home() {
         >
           <a
             href="#projects"
-            className="bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg font-semibold shadow hover:bg-accent transition text-lg transform-gpu hover:scale-105 focus:scale-105"
+            className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white border border-gray-200 dark:border-slate-600 px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-lg transform-gpu hover:scale-105 focus:scale-10"
           >
             See My Work
           </a>
           <a
             href="/resume.pdf"
-            className="bg-black dark:bg-white text-white dark:text-black px-8 py-3 rounded-lg font-semibold shadow hover:bg-accent transition text-lg transform-gpu hover:scale-105 focus:scale-105"
+            className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white border border-gray-200 dark:border-slate-600 px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-lg transform-gpu hover:scale-105 focus:scale-105"
             download
           >
             Download Resume
           </a>
         </motion.div>
       </motion.section>
+
       {/* About Section */}
       <motion.section
         id="about"
-        className="py-16 bg-slate-50 dark:bg-black flex flex-col items-center px-4"
+        className="py-16 flex flex-col items-center px-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
@@ -149,43 +125,44 @@ export default function Home() {
         custom={0}
       >
         <motion.h2
-          className="text-3xl font-bold mb-4 text-black dark:text-white"
+          className="text-3xl font-bold mb-4 text-gray-900 dark:text-white"
           variants={fadeSlideUp}
           custom={0.1}
         >
           About Me
         </motion.h2>
 
-        <p className="max-w-xl text-center text-lg text-black dark:text-gray-300 mb-6">
+        <p className="max-w-xl text-center text-lg text-gray-600 dark:text-gray-300 mb-6">
           I&apos;m Tirtha, passionate about building impactful software and
           exploring the frontiers of AI and Quantum Computing. I love solving
           problems and collaborating on innovative projects.
         </p>
         <div className="flex flex-wrap gap-3 justify-center">
-          <span className="bg-white dark:bg-zinc-800 text-black dark:text-white px-4 py-2 rounded-full font-medium transition hover:scale-105">
+          <span className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md border border-gray-100 dark:border-slate-700">
             JavaScript
           </span>
-          <span className="bg-white dark:bg-zinc-800 text-black dark:text-white px-4 py-2 rounded-full font-medium transition hover:scale-105">
+          <span className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md border border-gray-100 dark:border-slate-700">
             React
           </span>
-          <span className="bg-white dark:bg-zinc-800 text-black dark:text-white px-4 py-2 rounded-full font-medium transition hover:scale-105">
+          <span className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md border border-gray-100 dark:border-slate-700">
             Next.js
           </span>
-          <span className="bg-white dark:bg-zinc-800 text-black dark:text-white px-4 py-2 rounded-full font-medium transition hover:scale-105">
+          <span className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md border border-gray-100 dark:border-slate-700">
             Python
           </span>
-          <span className="bg-white dark:bg-zinc-800 text-black dark:text-white px-4 py-2 rounded-full font-medium transition hover:scale-105">
+          <span className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md border border-gray-100 dark:border-slate-700">
             AI/ML
           </span>
-          <span className="bg-white dark:bg-zinc-800 text-black dark:text-white px-4 py-2 rounded-full font-medium transition hover:scale-105">
+          <span className="bg-white dark:bg-slate-800 text-gray-900 dark:text-white px-4 py-2 rounded-full font-medium transition-all duration-300 hover:scale-105 shadow-md border border-gray-100 dark:border-slate-700">
             Quantum
           </span>
         </div>
       </motion.section>
+
       {/* Projects Section */}
       <motion.section
         id="projects"
-        className="py-16 bg-slate-50 dark:bg-black px-4"
+        className="py-16 px-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
@@ -193,7 +170,7 @@ export default function Home() {
         custom={0}
       >
         <motion.h2
-          className="text-3xl font-bold mb-10 text-center text-black dark:text-white"
+          className="text-3xl font-bold mb-10 text-center text-gray-900 dark:text-white"
           variants={fadeSlideUp}
           custom={0.1}
         >
@@ -210,7 +187,7 @@ export default function Home() {
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="bg-white dark:bg-zinc-900 rounded-xl shadow-lg p-6 flex flex-col items-start hover:scale-105 transition"
+              className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl p-6 flex flex-col items-start hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-slate-700"
               variants={cardVariant}
             >
               <Image
@@ -220,14 +197,14 @@ export default function Home() {
                 height={64}
                 className="w-16 h-16 mb-4"
               />
-              <h3 className="text-xl font-semibold mb-2 text-black dark:text-white">
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
                 {i === 0
                   ? "Project One"
                   : i === 1
                     ? "Project Two"
                     : "Project Three"}
               </h3>
-              <p className="text-black dark:text-gray-300 mb-4">
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 {i === 0
                   ? "A brief description of your awesome project goes here. Highlight what makes it special!"
                   : i === 1
@@ -236,7 +213,7 @@ export default function Home() {
               </p>
               <a
                 href="#"
-                className="text-accent dark:text-white font-medium hover:underline"
+                className="text-blue-600 dark:text-blue-400 font-medium hover:underline transition-colors duration-200"
               >
                 View Project
               </a>
@@ -244,9 +221,10 @@ export default function Home() {
           ))}
         </motion.div>
       </motion.section>
+
       {/* CTA Section */}
       <motion.section
-        className="py-16 bg-gradient-to-br from-purple-100 to-pink-100 dark:from-black dark:via-zinc-900 dark:to-black text-black dark:text-white text-center"
+        className="py-16 text-gray-900 dark:text-white text-center"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
@@ -260,12 +238,16 @@ export default function Home() {
         >
           Let&apos;s Connect!
         </motion.h2>
-        <motion.p className="mb-6 text-lg" variants={fadeSlideUp} custom={0.2}>
+        <motion.p
+          className="mb-6 text-lg text-gray-600 dark:text-gray-300"
+          variants={fadeSlideUp}
+          custom={0.2}
+        >
           Interested in collaborating or just want to say hi? Reach out to me
           below.
         </motion.p>
         <motion.form
-          className="w-full max-w-md mx-auto bg-white/80 dark:bg-zinc-900/80 p-6 rounded-xl shadow flex flex-col gap-4 text-left mb-0"
+          className="w-full max-w-md mx-auto bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-lg flex flex-col gap-4 text-left mb-0 border border-gray-100 dark:border-slate-700"
           variants={fadeSlideUp}
           custom={0.3}
           onSubmit={(e) => {
@@ -274,7 +256,10 @@ export default function Home() {
           }}
         >
           <div>
-            <label htmlFor="name" className="block font-semibold mb-1">
+            <label
+              htmlFor="name"
+              className="block font-semibold mb-1 text-gray-900 dark:text-white"
+            >
               Name
             </label>
             <input
@@ -282,11 +267,14 @@ export default function Home() {
               id="name"
               name="name"
               required
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
             />
           </div>
           <div>
-            <label htmlFor="email" className="block font-semibold mb-1">
+            <label
+              htmlFor="email"
+              className="block font-semibold mb-1 text-gray-900 dark:text-white"
+            >
               Email
             </label>
             <input
@@ -294,11 +282,14 @@ export default function Home() {
               id="email"
               name="email"
               required
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent"
+              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
             />
           </div>
           <div>
-            <label htmlFor="message" className="block font-semibold mb-1">
+            <label
+              htmlFor="message"
+              className="block font-semibold mb-1 text-gray-900 dark:text-white"
+            >
               Message
             </label>
             <textarea
@@ -306,22 +297,22 @@ export default function Home() {
               name="message"
               rows={4}
               required
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-black dark:text-white focus:outline-none focus:ring-2 focus:ring-accent resize-none"
+              className="w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 resize-none"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-3 rounded-lg font-semibold shadow hover:bg-accent transition text-lg transform-gpu hover:scale-105 focus:scale-105"
+            className="w-full bg-gradient-to-b from-blue-500 via-indigo-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 text-lg transform-gpu hover:scale-105 focus:scale-105 border border-blue-400/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-slate-900"
           >
             Send Message
           </button>
         </motion.form>
       </motion.section>
+
       {/* Contact Section */}
       <motion.section
-        style={{ marginTop: "-3rem" }}
         id="contact"
-        className="py-24 bg-slate-50 dark:bg-black flex flex-col items-center px-4"
+        className="py-24 flex flex-col items-center px-4"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.6 }}
@@ -329,17 +320,17 @@ export default function Home() {
         custom={0}
       >
         <motion.h2
-          className="text-3xl font-bold mb-4 text-black dark:text-white"
+          className="text-3xl font-bold mb-4 text-gray-900 dark:text-white"
           variants={fadeSlideUp}
           custom={0.1}
         >
           Contact
         </motion.h2>
-        <p className="mb-6 text-lg text-black dark:text-gray-300 text-center max-w-xl">
+        <p className="mb-6 text-lg text-gray-600 dark:text-gray-300 text-center max-w-xl">
           Email me at{" "}
           <a
             href="mailto:tirthabiswasm@gmail.com"
-            className="text-accent dark:text-white underline"
+            className="text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200"
           >
             tirthabiswasm@gmail.com
           </a>{" "}
@@ -350,44 +341,31 @@ export default function Home() {
             href="https://linkedin.com/in/yourprofile"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition"
+            className="hover:scale-110 transition-all duration-300"
           >
-            <FaLinkedin className="w-8 h-8 text-[#0077b5] dark:text-white" />
+            <FaLinkedin className="w-8 h-8 text-[#0077b5] dark:text-blue-400" />
           </a>
           <a
             href="https://twitter.com/yourprofile"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition"
+            className="hover:scale-110 transition-all duration-300"
           >
-            <FaTwitter className="w-8 h-8 text-[#1da1f2] dark:text-white" />
+            <FaTwitter className="w-8 h-8 text-[#1da1f2] dark:text-blue-400" />
           </a>
           <a
             href="https://github.com/yourprofile"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:scale-110 transition"
+            className="hover:scale-110 transition-all duration-300"
           >
-            <FaGithub className="w-8 h-8 text-black dark:text-white" />
+            <FaGithub className="w-8 h-8 text-gray-900 dark:text-white" />
           </a>
         </div>
       </motion.section>
-      {/* Footer */}
-      <footer className="h-24 py-6 flex flex-col sm:flex-row items-center justify-between px-6 lg:px-12 bg-slate-100 dark:bg-black border-t border-muted dark:border-zinc-800 text-sm gap-2 sm:gap-0">
-        <span className="text-black dark:text-white">
-          © 2025 Tirtha Biswas
-        </span>
-        <div className="flex gap-4 items-center">
-          <a
-            href="#privacy"
-            className="hover:underline text-black dark:text-gray-300"
-          >
-            Goals
-          </a>
 
-          <ThemeToggle />
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
