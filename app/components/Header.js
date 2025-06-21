@@ -43,7 +43,7 @@ export default function Header() {
       {/* Centered Nav Links */}
       <nav className="flex-1 flex justify-center gap-6">
         {navLinks.map((link) => (
-          <a
+          <Link
             key={link.href}
             href={link.href}
             className={`relative font-bold text-sm transition-colors duration-300
@@ -51,13 +51,13 @@ export default function Header() {
               after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[3px] after:scale-x-0 after:transition-transform after:duration-200 after:origin-left hover:after:scale-x-100 `}
           >
             {link.label}
-          </a>
+          </Link>
         ))}
       </nav>
       {/* Actions */}
       <div className="flex items-center gap-2 min-w-[80px] justify-end flex-shrink-0">
         <ThemeToggle />
-        <a
+        <Link
           href="/#contact"
           className={`inline-flex items-center gap-1 px-4 py-1.5 rounded-full font-semibold text-sm transition-colors duration-300
             ${
@@ -68,7 +68,7 @@ export default function Header() {
             `}
         >
           Contact
-        </a>
+        </Link>
       </div>
     </header>
   );
